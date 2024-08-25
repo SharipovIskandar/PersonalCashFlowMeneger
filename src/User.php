@@ -86,4 +86,15 @@ class User
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+
+    public function getUserId(string $email)
+    {
+        $sql = "SELECT * from `users` where email = :email;";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        return $this->pdo->lastInsertId();
+    }
 }

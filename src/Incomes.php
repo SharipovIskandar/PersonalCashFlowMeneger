@@ -2,6 +2,8 @@
 
 namespace PM;
 
+use Cassandra\Date;
+use DateTime;
 use PDO;
 
 class Incomes
@@ -13,13 +15,15 @@ class Incomes
         $this->pdo = DB::connect();
     }
 
-    public function recordIncome(string $income)
+    public function recordIncome(int $amount, string $description, int $category_id, int $user_id)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO incomes (income) VALUES (:income)");
-        $stmt->bindParam(':income', $income);
-        if($stmt->execute()){
-            return true;
-        }
-        return false;
+        $stmt = $this->pdo->prepare("INSERT INTO incomes (amount, description, category_id, user_id, created_at) 
+                                            VALUES (:amount, :description, :category_id, :user_id, NOW())");
+        $stmt->bindParam(':amount', $amount);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':category_id', $category_id);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
     }
 }

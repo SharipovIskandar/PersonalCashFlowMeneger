@@ -17,3 +17,5 @@ Router::get('/inc/exp', fn() => (new UserDashboard())->incAndExp());
 Router::get('/budget/planning', fn() => (new UserDashboard())->budgetPlanning());
 Router::get('/set/goal', fn() => (new UserDashboard())->setGoal());
 Router::get('/summary', fn() => (new UserDashboard())->summaryPage());
+
+Router::post('/inc/exp', fn()=> (new \Controller\CashFlowController())->incomeOrExpensesCashFlow());
