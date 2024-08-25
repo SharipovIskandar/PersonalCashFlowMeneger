@@ -1,0 +1,76 @@
+/* General */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header */
+header {
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    padding: 1rem 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Input Field */
+.input-field input {
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field input:focus {
+    border-color: #0288d1;
+    box-shadow: 0 1px 0 0 #0288d1;
+}
+
+/* Button */
+.btn-large {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-large:hover {
+    background-color: #0277bd;
+    transform: scale(1.05);
+}
+
+.btn-large:focus {
+    outline: none;
+}
+
+/* Link */
+a {
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0277bd;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
