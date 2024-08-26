@@ -2,6 +2,7 @@
 
 namespace PM;
 
+use Cassandra\Date;
 use DateTime;
 use PDO;
 

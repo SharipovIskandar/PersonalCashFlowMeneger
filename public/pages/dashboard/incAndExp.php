@@ -26,10 +26,6 @@ loadPartials('navbar');
                     </select>
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-medium">Sana</label>
-                    <input type="datetime-local" name="date" class="w-full mt-2 p-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                </div>
-                <div>
                     <label class="block text-gray-700 font-medium">Kategoriyani kiriting</label>
                     <input type="text" name="category" class="w-full mt-2 p-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masalan, maosh, oziq-ovqat..." required>
                 </div>
@@ -87,4 +83,6 @@ loadPartials('navbar');
 </main>
 
 
-<?php loadPartials('footer'); ?>
+<?php
+loadPartials('footer');
+?>

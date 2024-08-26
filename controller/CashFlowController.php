@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use DateTime;
 use PM\Expense_categories;
 use PM\Expenses;
 use PM\Income_categories;
@@ -16,21 +17,21 @@ class CashFlowController
         $amount = $_POST['amount'];
         $category = $_POST['category'];
         $description = $_POST['description'];
-        $date = $_POST['date'];
-        if (($incType == 'income') && $category)
+        $email = $_SESSION['user']['email'];
+        if (($incType === 'income') && $category)
         {
             $category_id = (new Income_categories())->create($category);
-            $user_id = (new User())->getUserId($_SESSION['user']['email']);
+            $user_id = (new User())->getUserId($email);
             $income = (new Incomes())->recordIncome($amount, $description, $category_id, $user_id);
             if($income){
                 echo "Muvofaqiyatli qoshildi!";
             }else{
                 echo "Nimadur xato ketdi!";
             }
-        }elseif (($incType == 'expense') && $category)
+        }elseif (($incType === 'expense') && $category)
         {
             $category_id = (new Expense_categories())->create($category);
-            $user_id = (new User())->getUserId($_SESSION['user']['email']);
+            $user_id = (new User())->getUserId($email);
             $expense = (new Expenses())->recordExpenses($amount, $description, $category_id, $user_id);
             if($expense){
                 echo "Muvofaqiyatli qoshildi!";

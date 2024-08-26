@@ -20,11 +20,11 @@ loadPartials('navbar');
                 </div>
                 <div class="mb-4">
                     <label for="budgetDate" class="block text-gray-700 text-sm font-bold mb-2">Boshlanish sanasi</label>
-                    <input type="datetime-local" id="budgetDate" name="budgetDate" class="w-full p-3 border border-gray-300 rounded-lg">
+                    <input type="date" id="budgetDate" name="budgetDate" class="w-full p-3 border border-gray-300 rounded-lg">
                 </div>
                 <div class="mb-4">
                     <label for="budgetEndDate" class="block text-gray-700 text-sm font-bold mb-2">Tugash sanasi</label>
-                    <input type="datetime-local" id="budgetEndDate" name="budgetEndDate" class="w-full p-3 border border-gray-300 rounded-lg">
+                    <input type="date" id="budgetEndDate" name="budgetEndDate" class="w-full p-3 border border-gray-300 rounded-lg">
                 </div>
                 <div class="mb-4">
                     <label for="budgetDescription" class="block text-gray-700 text-sm font-bold mb-2">Tavsif</label>

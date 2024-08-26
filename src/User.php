@@ -90,11 +90,15 @@ class User
 
     public function getUserId(string $email)
     {
-        $sql = "SELECT * from `users` where email = :email;";
+        $sql = "SELECT id FROM `users` WHERE email = :email;";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
-        $stmt->execute();
-
-        return $this->pdo->lastInsertId();
+        if($stmt->execute())
+        {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user ? $user['id'] : false;
+        }
+        return false;
     }
+
 }

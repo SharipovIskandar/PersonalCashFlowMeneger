@@ -36,4 +36,8 @@ class UserDashboard
     {
         loadView('dashboard/summaryPage');
     }
+    public function idc()
+    {
+        loadView('dashboard/idc');
+    }
 }
