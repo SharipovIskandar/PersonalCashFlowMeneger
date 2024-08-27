@@ -5,6 +5,7 @@ loadPartials('navbar');
  * @var $incomes
  * @var $expenses
  */
+
 ?>
 
 <main class="container mx-auto p-5">
@@ -29,10 +30,10 @@ loadPartials('navbar');
                 🏦 Daromadlar va xarajatlaringizni bir joyda kuzatib boring. Biz sizga o'z moliyaviy holatingizni to'liq nazorat qilish imkoniyatini taqdim etamiz.
             </p>
             <p class="text-white text-lg mb-4">
-                💰 Jami Daromadlar: <span class="font-bold"><?= number_format($incomes->total_amount_inc, 0, '', ' ') ?> UZS</span>
+                💰 Jami Daromadlar: <span class="font-bold"><?= number_format($incomes['total_amount_inc'], 0, '', ' ') ?> UZS</span>
             </p>
             <p class="text-white text-lg">
-                📉 Jami Xarajatlar: <span class="font-bold"><?= number_format($expenses->total_amount_exp, 0, '', ' ') ?> UZS</span>
+                📉 Jami Xarajatlar: <span class="font-bold"><?= number_format($expenses['total_amount_exp'], 0, '', ' ') ?> UZS</span>
             </p>
         </a>
 

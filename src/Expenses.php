@@ -14,14 +14,48 @@ class Expenses
     {
         $this->pdo = DB::connect();
     }
-    public function getExpenses()
+    public function getExpenses(string $email)
     {
-        return $this->pdo->query('SELECT * FROM expenses')->fetchAll(PDO::FETCH_ASSOC);
+        $sql = 'SELECT 
+                e.*, 
+                u.email
+            FROM 
+                expenses e
+            JOIN 
+                users u 
+            ON 
+                e.user_id = u.id
+            WHERE 
+                u.email = :email';
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getExpensesAmount()
+
+
+
+    public function getExpensesAmount(string $email)
     {
-        return $this->pdo->query("SELECT SUM(amount) AS total_amount_exp FROM expenses;")->fetch();
+        $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $userId = $user['id'];
+
+            $stmt = $this->pdo->prepare("SELECT SUM(amount) AS total_amount_exp 
+                                      FROM expenses 
+                                      WHERE user_id = :user_id");
+            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+
+        return ['total_amount_inc' => 0];
     }
     public function recordExpenses(int $amount, string $description, int $category_id, int $user_id)
     {

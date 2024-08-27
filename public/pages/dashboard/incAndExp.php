@@ -69,7 +69,7 @@ loadPartials('navbar');
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Daromad: <span class="text-green-600">$<?= number_format($incomes_amount->total_amount_inc, 0, '', ' ')?></span></p>
+                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Daromad: <span class="text-green-600">$<?= number_format($incomes_amount['total_amount_inc'], 0, '', ' ')?></span></p>
             </div>
             <div class="bg-white p-8 rounded-lg shadow-xl">
                 <h4 class="text-xl font-semibold text-gray-800 mb-4">Xarajatlar</h4>
@@ -81,7 +81,7 @@ loadPartials('navbar');
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Xarajatlar: <span class="text-red-600">$<?= number_format($expenses_amount->total_amount_exp, 0, '', ' ') ?></span></p>
+                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Xarajatlar: <span class="text-red-600">$<?= number_format($expenses_amount['total_amount_exp'], 0, '', ' ') ?></span></p>
             </div>
         </div>
     </section>
@@ -89,8 +89,8 @@ loadPartials('navbar');
     <!-- Balance -->
     <section class="mt-10 text-center">
         <h3 class="text-2xl font-semibold text-gray-800 mb-4">Balans</h3>
-        <p class="text-3xl font-bold <?= $balance >= 0 ? 'text-green-600' : 'text-red-600' ?>">
-            $<?= $balance ?>
+        <p class="text-3xl font-bold <?= number_format($incomes_amount['total_amount_inc'] - $expenses_amount['total_amount_exp'], 0, '', ' ' )  >= 0 ? 'text-green-600' : 'text-red-600' ?>">
+            $<?= number_format($incomes_amount['total_amount_inc'] - $expenses_amount['total_amount_exp'], 0, '', ' ' ) ?>
         </p>
     </section>
 </main>
