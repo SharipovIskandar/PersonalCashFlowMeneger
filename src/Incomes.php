@@ -37,25 +37,29 @@ class Incomes
 
 
 
-    public function getIncomesAmount(string $email)
+    public function getIncomesAmount(string $email = null)
     {
-        $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = :email");
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($email) {
+            $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
-            $userId = $user['id'];
+            if ($user) {
+                $userId = $user['id'];
 
-            $stmt = $this->pdo->prepare("SELECT SUM(amount) AS total_amount_inc 
+                $stmt = $this->pdo->prepare("SELECT SUM(amount) AS total_amount_inc 
                                       FROM incomes 
                                       WHERE user_id = :user_id");
-            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+                $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+
+            return ['total_amount_inc' => 0];
         }
 
-        return ['total_amount_inc' => 0];
+        return null;
     }
 
     public function recordIncome(int $amount, string $description, int $category_id, int $user_id)

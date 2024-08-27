@@ -21,3 +21,5 @@ Router::get('/profile', fn() => (new UserDashboard())->profile());
 Router::get('/settings', fn() => (new UserDashboard())->settings());
 
 Router::post('/inc/exp', fn()=> (new \Controller\CashFlowController())->incomeOrExpensesCashFlow());
+
+Router::errorResponse(404, 'Not Found');

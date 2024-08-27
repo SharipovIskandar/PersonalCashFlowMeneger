@@ -21,26 +21,32 @@ class UserDashboard
     }
     public function dashboard()
     {
-        $incomes = (new Incomes())->getIncomesAmount($_SESSION['user']['email']);
-        $expenses = (new Expenses())->getExpensesAmount($_SESSION['user']['email']);
-
+        $email = $_SESSION['user']['email'];
+        if($email) {
+            $incomes = (new Incomes())->getIncomesAmount($email);
+            $expenses = (new Expenses())->getExpensesAmount($email);
+        }
         loadView('dashboard/home', ['incomes' => $incomes, 'expenses' => $expenses]);
     }
 
     public function profile()
     {
-        $incomes = (new Incomes())->getIncomesAmount($_SESSION['user']['email']);
-        $expenses = (new Expenses())->getExpensesAmount($_SESSION['user']['email']);
+        $email = $_SESSION['user']['email'];
+            $incomes = (new Incomes())->getIncomesAmount($email);
+            $expenses = (new Expenses())->getExpensesAmount($email);
+
         loadView('view/profile', ['incomes' => $incomes, 'expenses' => $expenses]);
     }
 
     public function incAndExp()
     {
-        $incomes_amount = (new Incomes())->getIncomesAmount($_SESSION['user']['email']);
-        $expenses_amount = (new Expenses())->getExpensesAmount($_SESSION['user']['email']);
-        $incomes = (new Incomes())->getIncomes($_SESSION['user']['email']);
-        $expenses = (new Expenses())->getExpenses($_SESSION['user']['email']);
-
+        $email = $_SESSION['user']['email'];
+        if($email) {
+            $incomes_amount = (new Incomes())->getIncomesAmount($email);
+            $expenses_amount = (new Expenses())->getExpensesAmount($email);
+            $incomes = (new Incomes())->getIncomes($email);
+            $expenses = (new Expenses())->getExpenses($email);
+        }
         loadView('dashboard/incAndExp', ['incomes_amount' => $incomes_amount, 'expenses_amount' => $expenses_amount, 'incomes'=> $incomes, 'expenses'=> $expenses ]);
     }
 

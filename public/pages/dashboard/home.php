@@ -13,6 +13,11 @@ loadPartials('navbar');
         <h2 class="text-5xl font-bold text-gray-900 leading-tight">
             Dashboard
         </h2>
+        <?php if(!$_SESSION['user']['email']): ?>
+        <p class="text-red-700 mt-4 text-xl">
+            Web sahifani to'liq ishlatmoqchi bo'lsangiz Ro'yxatdan oting yoki Kirish tugmasi orqali kiring !
+        </p>
+        <?php endif; ?>
         <p class="text-gray-700 mt-4 text-xl">
             Moliyaviy maqsadlaringizga erishish uchun barcha zarur vositalar bir joyda.
         </p>

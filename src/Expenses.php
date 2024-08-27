@@ -37,7 +37,7 @@ class Expenses
 
 
 
-    public function getExpensesAmount(string $email)
+    public function getExpensesAmount(string $email = null)
     {
         $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);

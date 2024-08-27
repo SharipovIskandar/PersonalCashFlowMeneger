@@ -12,7 +12,9 @@ loadPartials('navbar');
                 <option>Kunlik</option>
                 <option>Haftalik</option>
             </select>
+            <?php if($_SESSION['user']['email']): ?>
             <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300">Filtrni qo'llash</button>
+            <?php endif; ?>
         </div>
     </div>
 

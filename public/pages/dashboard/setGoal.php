@@ -27,7 +27,9 @@ loadPartials('navbar');
                 <label for="goalDeadline" class="block text-gray-700 text-sm font-medium mb-2">Maqsad Tugash Sani</label>
                 <input type="date" id="goalDeadline" name="goalDeadline" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" required>
             </div>
+            <?php if($_SESSION['user']['email']): ?>
             <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Maqsadni Qo'shish</button>
+            <?php endif; ?>
         </form>
     </section>
 

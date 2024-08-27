@@ -51,7 +51,9 @@ loadPartials('navbar');
                     <input type="number" step="0.01" name="amount" class="w-full mt-2 p-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 </div>
             </div>
+            <?php if($_SESSION['user']['email']): ?>
             <button type="submit" class="mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Qo'shish</button>
+            <?php endif; ?>
         </form>
     </section>
 

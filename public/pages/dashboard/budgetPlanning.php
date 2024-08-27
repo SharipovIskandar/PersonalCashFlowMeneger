@@ -26,7 +26,9 @@ loadPartials('navbar');
                     <label for="budgetDescription" class="block text-gray-700 text-sm font-bold mb-2">Tavsif</label>
                     <textarea id="budgetDescription" name="budgetDescription" placeholder="Budjet haqida qisqacha ma'lumot" rows="4" class="w-full p-3 border border-gray-300 rounded-lg" required></textarea>
                 </div>
+                <?php if($_SESSION['user']['email']): ?>
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Qo'shish</button>
+                <?php endif; ?>
             </form>
         </div>
 
