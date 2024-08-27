@@ -1,7 +1,14 @@
 <?php
 loadPartials('header');
 loadPartials('navbar');
+/**
+ * @var $incomes_amount
+ * @var $expenses_amount
+ * @var $incomes
+ * @var $expenses
+ */
 ?>
+
 
 <main class="container mx-auto p-5">
     <section class="text-center my-10">
@@ -16,6 +23,12 @@ loadPartials('navbar');
     <!-- Income & Expense Form -->
     <section class="bg-white p-8 rounded-lg shadow-xl mt-10">
         <h3 class="text-2xl font-semibold text-gray-800 mb-6">Daromad yoki Xarajat qo'shish</h3>
+        <?php if (isset($_SESSION['messages']['incomeAndExpense'])): ?>
+            <div class="mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg shadow-md text-center">
+                <?= $_SESSION['messages']['incomeAndExpense']; ?>
+            </div>
+            <?php unset($_SESSION['messages']['incomeAndExpense']);?>
+        <?php endif; ?>
         <form method="POST" action="" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -52,11 +65,11 @@ loadPartials('navbar');
                     <?php foreach ($incomes as $income): ?>
                         <li class="flex justify-between py-2 border-b border-gray-200">
                             <span><?= $income['description'] ?> - <?= $income['date'] ?></span>
-                            <span class="text-green-600 font-semibold">+$<?= $income['amount'] ?></span>
+                            <span class="text-green-600 font-semibold">+$<?= number_format($income['amount'], 0, '', ' ') ?></span>
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Daromad: <span class="text-green-600">$<?= $totalIncome ?></span></p>
+                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Daromad: <span class="text-green-600">$<?= number_format($incomes_amount->total_amount_inc, 0, '', ' ')?></span></p>
             </div>
             <div class="bg-white p-8 rounded-lg shadow-xl">
                 <h4 class="text-xl font-semibold text-gray-800 mb-4">Xarajatlar</h4>
@@ -64,11 +77,11 @@ loadPartials('navbar');
                     <?php foreach ($expenses as $expense): ?>
                         <li class="flex justify-between py-2 border-b border-gray-200">
                             <span><?= $expense['description'] ?> - <?= $expense['date'] ?></span>
-                            <span class="text-red-600 font-semibold">-$<?= $expense['amount'] ?></span>
+                            <span class="text-red-600 font-semibold">-$<?= number_format($expense['amount'], 0, '', ' ')  ?></span>
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Xarajatlar: <span class="text-red-600">$<?= $totalExpenses ?></span></p>
+                <p class="text-xl font-semibold text-gray-800 mt-4">Jami Xarajatlar: <span class="text-red-600">$<?= number_format($expenses_amount->total_amount_exp, 0, '', ' ') ?></span></p>
             </div>
         </div>
     </section>

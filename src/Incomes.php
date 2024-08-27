@@ -15,6 +15,15 @@ class Incomes
         $this->pdo = DB::connect();
     }
 
+    public function getIncomes()
+    {
+        return $this->pdo->query('SELECT * FROM incomes')->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getIncomesAmount()
+    {
+        return $this->pdo->query("SELECT SUM(amount) AS total_amount_inc FROM incomes;;")->fetch();
+    }
     public function recordIncome(int $amount, string $description, int $category_id, int $user_id)
     {
         $stmt = $this->pdo->prepare("INSERT INTO incomes (amount, description, category_id, user_id, created_at) 

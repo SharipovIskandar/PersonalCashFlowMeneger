@@ -17,5 +17,7 @@ Router::get('/inc/exp', fn() => (new UserDashboard())->incAndExp());
 Router::get('/budget/planning', fn() => (new UserDashboard())->budgetPlanning());
 Router::get('/set/goal', fn() => (new UserDashboard())->setGoal());
 Router::get('/summary', fn() => (new UserDashboard())->summaryPage());
+Router::get('/profile', fn() => (new UserDashboard())->profile());
+Router::get('/settings', fn() => (new UserDashboard())->settings());
 
 Router::post('/inc/exp', fn()=> (new \Controller\CashFlowController())->incomeOrExpensesCashFlow());

@@ -14,7 +14,15 @@ class Expenses
     {
         $this->pdo = DB::connect();
     }
+    public function getExpenses()
+    {
+        return $this->pdo->query('SELECT * FROM expenses')->fetchAll(PDO::FETCH_ASSOC);
+    }
 
+    public function getExpensesAmount()
+    {
+        return $this->pdo->query("SELECT SUM(amount) AS total_amount_exp FROM expenses;")->fetch();
+    }
     public function recordExpenses(int $amount, string $description, int $category_id, int $user_id)
     {
         $stmt = $this->pdo->prepare("INSERT INTO expenses (amount, description, category_id, user_id, created_at) 
