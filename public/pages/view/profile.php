@@ -4,6 +4,7 @@ loadPartials('navbar');
 /**
  * @var $user;
  */
+
 ?>
 
 <!-- Profile Section -->
@@ -24,7 +25,7 @@ loadPartials('navbar');
                         </svg>
                         <div>
                             <p class="text-gray-700 font-semibold">Ism:</p>
-                            <p class="text-gray-600"><?= htmlspecialchars($user->first_name) ?></p>
+                            <p class="text-gray-600"><?= htmlspecialchars($user['name']) ?></p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -33,7 +34,7 @@ loadPartials('navbar');
                         </svg>
                         <div>
                             <p class="text-gray-700 font-semibold">Familiya:</p>
-                            <p class="text-gray-600"><?= htmlspecialchars($user->last_name) ?></p>
+                            <p class="text-gray-600"><?= htmlspecialchars($user['lastName']) ?></p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -42,7 +43,7 @@ loadPartials('navbar');
                         </svg>
                         <div>
                             <p class="text-gray-700 font-semibold">Email:</p>
-                            <p class="text-gray-600"><?= htmlspecialchars($user->email) ?></p>
+                            <p class="text-gray-600"><?= htmlspecialchars($user['email']) ?></p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-4">

@@ -37,6 +37,7 @@ class Incomes
 
 
 
+
     public function getIncomesAmount(string $email = null)
     {
         if($email) {
@@ -64,7 +65,7 @@ class Incomes
 
     public function recordIncome(int $amount, string $description, int $category_id, int $user_id)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO incomes (amount, description, category_id, user_id, created_at) 
+        $stmt = $this->pdo->prepare("INSERT INTO incomes (amount, description, category_id, user_id, updated_at) 
                                             VALUES (:amount, :description, :category_id, :user_id, NOW())");
         $stmt->bindParam(':amount', $amount);
         $stmt->bindParam(':description', $description);

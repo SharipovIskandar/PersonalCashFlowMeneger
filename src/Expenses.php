@@ -36,7 +36,6 @@ class Expenses
 
 
 
-
     public function getExpensesAmount(string $email = null)
     {
         $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = :email");
@@ -57,6 +56,8 @@ class Expenses
 
         return ['total_amount_inc' => 0];
     }
+
+
     public function recordExpenses(int $amount, string $description, int $category_id, int $user_id)
     {
         $stmt = $this->pdo->prepare("INSERT INTO expenses (amount, description, category_id, user_id, created_at) 

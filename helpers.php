@@ -48,3 +48,9 @@ function loadController(string $path, array|null $args = null): void
     }
     require basePath('/controllers/'.$path.'.php');
 }
+
+function redirect(string $url): void
+{
+    header('Location: '.$url);
+    exit();
+}

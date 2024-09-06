@@ -14,7 +14,7 @@ loadPartials('navbar');
     <!-- Goals Form -->
     <section class="mt-8">
         <h3 class="text-2xl font-semibold text-gray-900 mb-4">Yangi Maqsad Qo'shish</h3>
-        <form action="#" method="POST" class="bg-white p-6 rounded-lg shadow-md">
+        <form action="/set/goal" method="POST" class="bg-white p-6 rounded-lg shadow-md">
             <div class="mb-4">
                 <label for="goalTitle" class="block text-gray-700 text-sm font-medium mb-2">Maqsad Sarlavhasi</label>
                 <input type="text" id="goalTitle" name="goalTitle" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="Maqsad sarlavhasini kiriting" required>

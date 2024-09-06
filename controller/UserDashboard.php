@@ -2,6 +2,8 @@
 
 namespace Controller;
 
+use Couchbase\User;
+use PM\Budget;
 use PM\Expenses;
 use PM\Incomes;
 
@@ -32,10 +34,10 @@ class UserDashboard
     public function profile()
     {
         $email = $_SESSION['user']['email'];
-            $incomes = (new Incomes())->getIncomesAmount($email);
-            $expenses = (new Expenses())->getExpensesAmount($email);
+        $userId = (new \PM\User())->getUserId($email);
+        $user = (new \PM\User())->getUser($userId);
 
-        loadView('view/profile', ['incomes' => $incomes, 'expenses' => $expenses]);
+        loadView('view/profile', ['user' => $user]);
     }
 
     public function incAndExp()
@@ -56,7 +58,9 @@ class UserDashboard
     }
     public function budgetPlanning()
     {
-        loadView('dashboard/budgetPlanning');
+        $budgets = (new Budget())->getBudgets();
+
+        loadView('dashboard/budgetPlanning', ['budgets' => $budgets]);
     }
     public function setGoal()
     {
