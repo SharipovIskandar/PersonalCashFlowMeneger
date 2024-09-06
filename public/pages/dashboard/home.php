@@ -86,3 +86,7 @@ loadPartials('navbar');
 <?php
 loadPartials('footer');
 ?>
+
+
+
+
